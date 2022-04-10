@@ -1,0 +1,101 @@
+:host {
+  height: 100vh;
+  display: block;
+}
+
+.match {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex: 1;
+    padding: 24px;
+  }
+  &__footer {
+    padding: 24px;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.person {
+  height: 100%;
+  overflow: hidden;
+
+  &__photo-backdrop {
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    filter: blur(10px);
+  }
+
+  &__photo {
+    object-fit: contain;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+
+    &--backdrop {
+      object-fit: cover;
+    }
+  }
+
+  &__footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 24px;
+  }
+
+  &__info {
+    font-size: 2rem;
+  }
+}
+
+button {
+  display: block;
+  flex: 1 1 auto;
+
+  & + button {
+    margin-left: 24px;
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    padding: 24px;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    font-size: 2rem;
+    line-height: 4rem;
+  }
+}

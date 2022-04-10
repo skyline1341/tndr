@@ -1,0 +1,56 @@
+<ng-container
+  *ngIf="{
+    card: card$ | async,
+    match: match$ | async
+  } as observable"
+>
+  <div
+    class="match"
+    *ngIf="observable.card"
+  >
+    <div class="match__content">
+      <mat-card class="person">
+        <div
+          class="person__photo-backdrop"
+          [style.background-image]="'url(' + observable.card.photo + ')'"
+        ></div>
+        <img
+          class="person__photo"
+          src="{{ observable.card.photo }}"
+        >
+        <div class="person__footer">
+          <mat-card-title class="person__info">
+            {{ observable.card.name }}{{ observable.card.age ? ', ' : '' }}{{ observable.card.age }}
+          </mat-card-title>
+        </div>
+      </mat-card>
+    </div>
+    <div class="match__footer">
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="like(observable.card.id)"
+      >Like</button>
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="dislike(observable.card.id)"
+      >Dislike</button>
+    </div>
+  </div>
+</ng-container>
+
+<div
+  *ngIf="popupVisible$ | async"
+  class="popup"
+>
+  <div class="popup__content">
+    <div class="popup__label">You got match!</div>
+    <button
+      mat-raised-button
+      color="primary"
+      class="popup__button"
+      (click)="closePopup()"
+    >Okay</button>
+  </div>
+</div>
